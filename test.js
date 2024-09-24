@@ -1,20 +1,29 @@
-var names = [
-    "Tariq", "Ali", "Rami", "Sara", "Huda", "Lina", "Ahmad", "Yara", "Mona", "Omar",
-    "Noor", "Amira", "Fadi", "Hassan", "Aya", "Khalid", "Leila", "Samer", "Zain", "Nadine",
-    "Ibrahim", "Hana", "Mahmoud", "Nour", "Rania", "Salim", "Rasha", "Adel", "Basma", "Waleed",
-    "Yousef", "Mariam", "Samira", "Issa", "Farah", "Bilal", "Laila", "Jana", "Mustafa", "Naji",
-    "Dina", "Hatem", "Maya", "Tamer", "Loubna", "Saif", "Fayez", "Salma", "Reem", "Zahra",
-    "Yazan", "Nabil", "Ola", "Rita", "Jawad", "Shadi", "Kamil", "Nada", "Ibtisam", "Basel",
-    "Ziad", "Manal", "Tala", "Anas", "Ghada", "Jamil", "Rabab", "Sami", "Rayan", "Fatima",
-    "Walid", "Nourhan", "Karim", "Maysa", "Firas", "Amal", "Lamis", "Sahar", "Rafik", "Iman",
-    "Mohammad", "Lamar", "Majed", "Tania", "Ayman", "Shereen", "Qasem", "Haifa", "Bassam", "Nada",
-    "Alaa", "Marwa", "Sameh", "Noura", "Murad", "Afaf", "Nizar", "Rida", "Aziz", "Dalia"
-    ];
-    var data="";
-
-for(var i=0; i<names.length; i++){
-    data+=`<tr><td>${names[i]}</td></tr>`;
- 
+var register = document.querySelector(".registerform");
+var nameinput = document.querySelector("#name");
+var descriptioninput = document.querySelector("#description");
+var priceinput =document.querySelector("#price");
+var users=[];
+register.onsubmit =function(e){
+    e.preventDefault();
+    var user={
+        name:nameinput.value,
+        description:descriptioninput.value,
+        price:priceinput.value,
+    };
+    users.push(user);
+    printData();
+    
 }
-
-document.querySelector("tbody").innerHTML=data;
+function printData(){
+    var data=``;
+    for(var i=0; i<users.length; i++){
+        data+=`
+    <tr>
+        <td>${users[i].name}</td>
+        <td>${users[i].description}</td>
+        <td>${users[i].price}</td>
+    </tr>
+        `
+    }
+    document.querySelector(".product").innerHTML=data;
+}
